@@ -1,5 +1,8 @@
-// C program for different tree traversals
+// C++ program for various types of functions implemented on trees
 #include <iostream>
+#include<queue>
+#include <climits>
+#include<stack>
 using namespace std;
 
 /* A binary tree node has data, pointer to left child
@@ -76,7 +79,145 @@ int height(Node *root)
     }
 
 }
+void reverselevelorder(Node *root)
+{
+	if(root==NULL)
+	return;
+	queue<Node*> Q;
+	stack<int> s;
+	Q.push(root);
+	while(!Q.empty())
+	{
+		Node* current=Q.front();
+		s.push(current->data);
+		if (current->left!=NULL)
+		{
+			Q.push(current->left);
+		}
+		if (current->right != NULL)
+		{
+			Q.push(current->right);
+		}
+		Q.pop();
+	}
+		while(s.empty()==false)
+		{
+			cout <<s.top() <<" ";
+			s.pop();
+		}
+}
 
+void LevelOrder(Node *root)
+{
+	if (root==NULL)
+	return;
+	queue<Node*> Q;
+	//push the reference of the root into the queue 
+	Q.push(root);
+	//while there is atleast one discovered node
+	while (!Q.empty())
+	{
+		Node* current=Q.front();
+		cout<<current->data<<" ";
+		//itereate to left of the root
+		if(current->left != NULL)
+		Q.push(current->left);
+		//itereate to right of the root
+		if(current->right != NULL)
+		Q.push(current->right);
+		Q.pop();//removing the element at front
+	}
+
+}
+void printleftView(Node* root) 
+{ 
+    if (!root) 
+        return; 
+ 
+    queue<Node*> q; 
+    q.push(root); 
+ 
+    while (!q.empty()) 
+    {     
+        // number of nodes at current level 
+        int n = q.size(); 
+         
+        // Traverse all nodes of current level 
+        for(int i = 1; i <= n; i++) 
+        { 
+            Node* temp = q.front(); 
+            q.pop(); 
+                 
+            // Print the left most element 
+            // at the level 
+            if (i == 1) 
+                cout<<temp->data<<" "; 
+             
+            // Add left node to queue 
+            if (temp->left != NULL) 
+                q.push(temp->left); 
+ 
+            // Add right node to queue 
+            if (temp->right != NULL) 
+                q.push(temp->right); 
+        } 
+    } 
+}     
+void printrightView(Node* root) 
+{ 
+    if (!root) 
+        return; 
+ 
+    queue<Node*> q; 
+    q.push(root); 
+ 
+    while (!q.empty()) 
+    {     
+        // number of nodes at current level 
+        int n = q.size(); 
+         
+        // Traverse all nodes of current level 
+        for(int i = n; i >=1 ; i--) 
+        { 
+            Node* temp = q.front(); 
+            q.pop(); 
+                 
+            // Print the left most element 
+            // at the level 
+            if (i == 1) 
+                cout<<temp->data<<" "; 
+             
+            // Add left node to queue 
+            if (temp->left != NULL) 
+                q.push(temp->left); 
+ 
+            // Add right node to queue 
+            if (temp->right != NULL) 
+                q.push(temp->right); 
+        } 
+    } 
+}     
+
+int get_max(Node *root)
+{
+	if(root == NULL)
+	return INT_MIN;
+	else
+	{//recurcively call for the left and right nodes
+		return max(root->data,max(get_max(root->left),get_max(root->right)));
+	}
+	
+}
+int get_min(Node *root)
+{
+	if(root == NULL)
+	return INT_MAX;
+	else
+	{
+		return min(root->data,min(get_min(root->right),get_min(root->left)));
+	}
+	
+}
 /* Driver program to test above functions*/
 int main()
 {
@@ -85,6 +226,8 @@ int main()
 	root->right		 = new Node(3);
 	root->left->left	 = new Node(4);
 	root->left->right = new Node(5);
+	root->right->left= new Node(6);
+	root->right->right	= new Node(7);
 
 	cout << "\nPreorder traversal of binary tree is \n";
 	printPreorder(root);
@@ -97,6 +240,24 @@ int main()
 
 	cout<< "\nHeight of the binary tree is \n";
 	cout<<height(root);
+
+	cout<<"\nLevel order traversal of binary tree is \n";
+	LevelOrder(root);
+
+	cout<<"\nReverse LevelOrder traversal binary tree is \n";
+	reverselevelorder(root);
+
+	cout<<"\nLeftRight view of binary tree is \n";
+	printleftView(root); 
+
+	cout<<"\nRight view of binary tree is \n";
+	printrightView(root);
+
+	cout<<"\nMaximum element of binary tree is \n";
+	cout<<get_max(root);
+
+	cout<<"\nMinimum element of binary tree is \n";
+	cout<<get_min(root);
 
 	return 0;
 }
