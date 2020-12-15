@@ -1,2 +1,2 @@
 
-  string ros=s.substr(1);
+    cout<<"==========="<<endl;
