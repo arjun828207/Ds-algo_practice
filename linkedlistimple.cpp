@@ -44,6 +44,21 @@ bool search(node* &head,int key)
     }
     return false;
 }
+void deletion(node* &head,int val)
+{
+    if(head== NULL)
+    return;
+    if(head->next==NULL)//if only one element is present
+    return;
+    node* temp=head;
+    while(temp->next->data!=val)
+    {
+        temp=temp->next;
+    }
+    node* todelete=temp->next;
+    temp->next=temp->next->next;
+    delete todelete;
+}
 void display(node* head)
 {
     node* temp=head;
@@ -61,6 +76,7 @@ int main()
     insertattail(head,2);
     insertattail(head,3);
     insertathead(head,4);
+    deletion(head,3);
     display(head);
     cout<<search(head,5)<<"  ";
 }
