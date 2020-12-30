@@ -1,7 +1,7 @@
 {
-    "python.pythonPath": "C:\\Users\\arjun\\AppData\\Local\\Programs\\Python\\Python38-32\\python.exe",
     "files.associations": {
         "*.html": "html",
-        "bitset": "cpp"
-    }
+        "iostream": "cpp"
+    },
+    "cmake.configureOnOpen": true
 }

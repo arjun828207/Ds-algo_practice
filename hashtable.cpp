@@ -22,7 +22,7 @@ int main()
 		{
 			if (d.second%2!=0)
 			{
-				printf("%d ",d.first);
+				printf("%d ",d.first); 
 				break;
 			}
 		}
@@ -35,4 +35,3 @@ int main()
 			}
 		}
 	}
-}
