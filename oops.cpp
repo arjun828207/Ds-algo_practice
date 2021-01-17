@@ -10,7 +10,6 @@ class student{
         cout<<"name :"<<name<<endl;
         cout<<"genders :"<<genders<<endl;
         cout<<"age :"<<age<<endl;
-    
     }
 };
 int main()
@@ -24,7 +23,6 @@ int main()
         cin>>arr[i].age;
         cout<<"Enter genders:";
         cin>>arr[i].genders;
-
     }
     for(int i=0; i<3;i++)
     {
