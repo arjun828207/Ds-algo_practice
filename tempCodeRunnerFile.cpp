@@ -1,2 +1,3 @@
-
-    cout<<"==========="<<endl;
+continue;
+                    else
+                    arr[x][j]=-1; 

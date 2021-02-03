@@ -14,13 +14,12 @@ int main()
 
     for(int i=0;i<8;i++)
     {
-        sum-=arr[i];
+        sum=sum-arr[i];
         if(sum==leftsum)
             {
                 cout<<i<<" ";
-
             }
-        leftsum+=arr[i];
+        leftsum=leftsum+arr[i];
     }
 
 }
@@ -54,8 +53,5 @@ int main()
             }
         leftsum+=arr[i];
         }
-
-
-
     }
 }
