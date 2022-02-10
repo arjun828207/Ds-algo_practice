@@ -71,11 +71,11 @@ for index in range(0,len(to)):
 
 	fullName=fName[index]+" "+lName[index]
 	# Call the message function
-	msg = message("sde in "+companyName[index]+"for hiring", "Hi "+fullName+" did my mai go to you!",r"E:\study\documents\ArjunPandey.pdf")
+	msg = message("sde in "+companyName[index]+"for hiring", "Hi "+fullName+" did my mai go to you!",r"D:\dsfds\documents\sdfa.pdf")
     
 	# Make a list of emails, where you wanna send mail
 	# Provide some data to the sendmail function!
-	smtp.sendmail(from_addr="arjunpandey.lpu@gmail.com",
+	smtp.sendmail(from_addr="dempu@gmail.com",
 				to_addrs=to[index], msg=msg.as_string())
 	print("Email Sent to " + to[index])
 # Finally, don't forget to close the connection
